@@ -40,4 +40,9 @@ public class Stack<T> {
 	public boolean isEmpty() {
 		return stack.size() == 0;
 	}
+
+	@Override
+	public String toString() {
+		return stack.toString();
+	}
 }
