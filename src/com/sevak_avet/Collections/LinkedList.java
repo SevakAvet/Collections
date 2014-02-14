@@ -1,5 +1,8 @@
 package com.sevak_avet.Collections;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LinkedList<T> {
 	private Node curNode;
 	private Node firstNode;
@@ -59,16 +62,21 @@ public class LinkedList<T> {
 		}
 	}
 
-	public int getIndex(T element) {
+	public List<Integer> getIndex(T element) {
+		List<Integer> indexes = new ArrayList<>();
 		curNode = firstNode;
 		int index = 1;
 
-		while(curNode != null && curNode.getElement() != null && !curNode.getElement().equals(element)) {
+		while(curNode != null) {
+			if(curNode.getElement() != null && curNode.getElement().equals(element)) {
+				indexes.add(index);
+			}
+
 			curNode = curNode.getNext();
 			++index;
 		}
 
-		return index;
+		return indexes;
 	}
 
 	public void pushFront(T element) {
@@ -185,6 +193,8 @@ public class LinkedList<T> {
 
 		public Node(T element) {
 			this.element = element;
+			next = new Node();
+			previous = new Node();
 		}
 
 		public Node getNext() {
